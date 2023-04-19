@@ -5,7 +5,7 @@ describe("MyERC1155Token", function () {
   let MyERC1155Token, myERC1155Token, owner, addr1, addr2;
 
   beforeEach(async function () {
-    MyERC1155Token = await ethers.getContractFactory("MyERC1155Token");
+    MyERC1155Token = await ethers.getContractFactory("MeuERC1155Token");
     [owner, addr1, addr2] = await ethers.getSigners();
     myERC1155Token = await MyERC1155Token.deploy("https://example.com/metadata/");
   });
@@ -17,7 +17,7 @@ describe("MyERC1155Token", function () {
   });
 
   describe("Cunhagem de tokens", function () {
-    it("Deve emitir tokens para o endereço especificado", async function () {
+    it("Deve emitir tokens para o endereço específico", async function () {
       await myERC1155Token.mint(addr1.address, 1, 50, "0x");
       expect(await myERC1155Token.balanceOf(addr1.address, 1)).to.equal(50);
     });
